@@ -25,9 +25,10 @@ setInterval(function () {
 }, 1000);
 
 //Running progress bar
+const bar = document.querySelector(".clock-progress-bar");
 
 function calcPercent(sec) {
-  return (sec / 60) * 100;
+  return sec / 60;
 }
 
 function currentSec() {
@@ -36,6 +37,7 @@ function currentSec() {
 
   return s;
 }
+
 setInterval(function () {
-  console.log(calcPercent(currentSec()));
-}, 1000);
+  bar.style.width = calcPercent(currentSec()) * 14 + "rem";
+}, 100);
