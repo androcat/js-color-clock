@@ -1,3 +1,4 @@
+// Running clock
 const clock = document.querySelector(".clock-display");
 
 function time() {
@@ -19,8 +20,22 @@ function time() {
   return hours + ":" + minutes + ":" + seconds;
 }
 
-console.log(document.querySelector("clock-display"));
-console.log(time());
 setInterval(function () {
   clock.textContent = time();
+}, 1000);
+
+//Running progress bar
+
+function calcPercent(sec) {
+  return (sec / 60) * 100;
+}
+
+function currentSec() {
+  let d = new Date();
+  let s = d.getSeconds();
+
+  return s;
+}
+setInterval(function () {
+  console.log(calcPercent(currentSec()));
 }, 1000);
