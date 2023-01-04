@@ -41,3 +41,43 @@ function currentSec() {
 setInterval(function () {
   bar.style.width = calcPercent(currentSec()) * 14 + "rem";
 }, 100);
+
+//Background
+const clockFace = document.querySelector(".clock-face");
+
+function toHexColor(num) {
+  return num.toString(16);
+}
+function currentSecHex() {
+  let d = new Date();
+  let s = d.getSeconds();
+  let hexS = s.toString(16).toUpperCase();
+  if (hexS.length === 1) {
+    hexS = "0" + hexS;
+  }
+  return hexS;
+}
+function currentMinHex() {
+  let d = new Date();
+  let m = d.getMinutes();
+  let hexM = m.toString(16).toUpperCase();
+  if (hexM.length === 1) {
+    hexM = "0" + hexM;
+  }
+  return hexM;
+}
+function currentHourHex() {
+  let d = new Date();
+  let h = d.getHours();
+  let hexH = h.toString(16).toUpperCase();
+  if (hexH.length === 1) {
+    hexH = "0" + hexH;
+  }
+  return hexH;
+}
+
+setInterval(function () {
+  clockFace.style.backgroundColor =
+    "#07" + (currentMinHex() + 100) + (currentSecHex() + 100);
+  console.log("#" + currentHourHex() + currentMinHex() + currentSecHex());
+}, 1000);
