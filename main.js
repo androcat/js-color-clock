@@ -20,10 +20,6 @@ function time() {
   return hours + ":" + minutes + ":" + seconds;
 }
 
-setInterval(function () {
-  clock.textContent = time();
-}, 1000);
-
 //Running progress bar
 const bar = document.querySelector(".clock-progress-bar");
 
@@ -45,9 +41,6 @@ setInterval(function () {
 //Background
 const clockFace = document.querySelector(".clock-face");
 
-function toHexColor(num) {
-  return num.toString(16);
-}
 function currentSecHex() {
   let d = new Date();
   let s = d.getSeconds();
@@ -78,6 +71,16 @@ function currentHourHex() {
 
 setInterval(function () {
   clockFace.style.backgroundColor =
-    "#07" + (currentMinHex() + 100) + (currentSecHex() + 100);
+    "#" + currentHourHex() + currentMinHex() + currentSecHex();
   console.log("#" + currentHourHex() + currentMinHex() + currentSecHex());
+}, 1000);
+
+//display time
+setInterval(function () {
+  if (clock.matches(":hover")) {
+    clock.textContent =
+      currentHourHex() + ":" + currentMinHex() + ":" + currentSecHex();
+  } else {
+    clock.textContent = time();
+  }
 }, 1000);
